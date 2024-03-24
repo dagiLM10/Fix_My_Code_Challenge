@@ -6,7 +6,7 @@ import hashlib
 import uuid
 
 
-class User()
+class User():
     """
     User class:
     - id: public string unique (uuid)
@@ -43,18 +43,18 @@ class User()
             self.__password = hashlib.md5(pwd.encode()).hexdigest().lower()
 
     def is_valid_password(self, pwd):
-    """
-    Valid password:
-    - `False` if `pwd` is `None`
-    - `False` if `pwd` is not a string
-    - `False` if `__password` is `None`
-    - Compare `__password` and the MD5 value of `pwd`
-    """
-    if pwd is None or type(pwd) is not str:
-        return False
-    if self.password is None:
-        return False
-    return hashlib.md5(pwd.encode()).hexdigest().lower == self.password
+        """
+        Valid password:
+        - `False` if `pwd` is `None`
+        - `False` if `pwd` is not a string
+        - `False` if `__password` is `None`
+        - Compare `__password` and the MD5 value of `pwd`
+        """
+        if pwd is None or type(pwd) is not str:
+            return False
+        if self.password is None:
+            return False
+        return hashlib.md5(pwd.encode()).hexdigest().lower == self.password
 
 if __name__ == '__main__':
     print("Test User")
@@ -64,7 +64,7 @@ if __name__ == '__main__':
         print("New User should have an id")
 
     user_2 = User()
-    if user_1.id == user2.id:
+    if user_1.id == user_2.id:
         print("User.id should be unique")
 
     u_pwd = "myPassword"
@@ -72,7 +72,7 @@ if __name__ == '__main__':
     if user_1.password == u_pwd:
         print("User.password should be hashed")
 
-    if user_2.password is nor None:
+    if user_2.password is not None:
         print("user.password should be None by default")
 
     user_2.password = None
